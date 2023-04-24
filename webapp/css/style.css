@@ -1,36 +1,34 @@
-/* Enter your custom styles here */
-/* Hintergrundfarbe der Liste ändern */
-
+/* Hintergrundfarbe der 3.Zeile ändern (Geschäftspartner) */
 .sapMList {
-    background-color: #d4c6c6;
-    border: 1px solid #b6aaaa;
-    font-size: 16px;
+    background-color: #24eee4a4;
     color: #f50c0c;
   }
-  .sapMBarPH {
-    background-color: #ec7ee7;
+  /* Hintergrundfarbe Überschrift */
+  .sapMTitle {
+    background-color: #05164d;
+    text-align: center;
   }
-
-.sapMBarLeft {
-  background-color: #b64b8d;
-}
-.sapMBarMiddle {
-  background-color: #7f79d6;
-}
-.sapMBarRight {
-  background-color: #8c8aaf;
-}
-  .sapMText {
-    background-color: #d4c6c6;
+  .sapFFCLColumn {
+    background-color: #ce0909;
+    border: 3px solid #080404;
+    
     color: rgb(53, 196, 72);
-  }
-.sapMListTbl{
-  color: rgb(53, 196, 72);
-  }
-  .sapMSFS{
-    color: rgb(213, 120, 236);
     }
-    .sapMNav{
-      background-color: #d4c6c6;
-      color: rgb(213, 120, 236);
+    /* Spalten */
+  .sapMText {
+    background-color: #ffad00;
+    border: 3px solid #080404;
+    
+    color: rgb(53, 196, 72);
+    }
+    /* Suchsymbol */
+    .sapMSFS {
+      background-color: #e9fc40;
+      border: 3px solid #080404;
+      
+      color: rgb(53, 196, 72);
       }
+sapUiBodyBackground {
+    background-color: rgb(34, 216, 223);
+    color: rgb(36, 57, 177);
+}sapMLnk

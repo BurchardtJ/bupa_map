@@ -12,7 +12,7 @@ sap.ui.define([
      */
 
 
-    function (Controller, JSONModel, Filter, FilterOperator, MessageToast, Fragment, Sorter) {
+    function (Controller, JSONModel, Filter, FilterOperator, MessageToast, Fragment, Sorter, Device, AnalyticMap) {
         "use strict";
 
         const searchCache = {};
@@ -268,6 +268,7 @@ sap.ui.define([
                         MessageToast.show(oEvent.getParameters().filterString);
                     }
                 }
-
+               
+            
             });
     });    
