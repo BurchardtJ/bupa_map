@@ -5,7 +5,7 @@
   }
   /* Hintergrundfarbe Überschrift */
   .sapMTitle {
-    background-color: #05164d;
+    background-color: #4bfaf1;
     text-align: center;
   }
   .sapFFCLColumn {
@@ -31,4 +31,4 @@
 sapUiBodyBackground {
     background-color: rgb(34, 216, 223);
     color: rgb(36, 57, 177);
-}sapMLnk
+}
