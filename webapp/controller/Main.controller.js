@@ -273,6 +273,8 @@ sap.ui.define([
                         MessageToast.show(oEvent.getParameters().filterString);
                     }
                 },
+
+                
                 onSelect: function(oEvent) {
                     const aSelectedOlFeatures = oEvent.getParameter("selectedOlFeatures");
                     if(aSelectedOlFeatures.length >  0) {
@@ -292,6 +294,61 @@ sap.ui.define([
                         popover.setOffsetY(y);
                         popover.openBy(oEvent.getSource().getParent());
                     }
+                    
+                },
+
+                onSaveToSAP: function(oEvent) {
+                    var token = {};
+                    var postDataToSAP = function(){
+                        return new Promise(function(resolve, reject){
+                          request({ 
+                                    url: this.getModel("eventLocation") + "/$metadata", 
+                                    jar : j,
+                                    headers: { 
+                                                "x-csrf-token" : "Fetch" 
+                                    },
+                                    success: function(response, textStatus, xhr){
+                                        token = xhr.getResponseHeader("X-CSRF-Token");
+                                        // Speichern Sie das Token für die Verwendung in den Anforderungsheadern
+                                    },
+                                    error: function(error) {
+                                        console.log("Fehler beim Abrufen des CSRF-Tokens: " + error.message);
+                                    }
+                                })})};
+                                 
+
+
+                    const oNode = oEvent.getSource().getBindingContext("Restaurants").getProperty("node");
+                    var oProperty = oNode.tags; //'{"addr:city":"Essen","addr:housenumber":"10","addr:postcode":"45128","addr:street":"Rellinghauser Straße","amenity":"restaurant","cuisine":"indian;afghan","delivery":"yes","email":"omid.hamidzai1997@gmail.com","level":"0","name":"Nargesi","opening_hours":"Mo-Su 11:00-22:00","phone":"+491726164279","smoking":"no","takeaway":"yes","website":"https://afghanischesrestaurant.eatbu.com/?lang=de","website:menu":"https://nargesi.order.dish.co/menus"}'
+                    MessageToast.show(token);
+
+                    this.getView().getModel("eventLocation").createEntry("/ZEVENT_LOCATIONSet", {
+                    headers: { "X-CSRF-Token": {token}},
+                    properties: {                       
+                    "Mandant": "500",    
+                    "Locationname": oProperty["name"],
+                    "Streetname": oProperty["addr:housenumber"],
+                    "Housenumber": oProperty["addr:housenumber"],
+                    "Postcode": oProperty["addr:postcode"],
+                    "City": oProperty["addr:city"],
+                    "Contact": oProperty["email"],
+                    "Phone": oProperty["phone"],
+                    "Openinghour": oProperty["opening_hours"],
+                    "Cuisine": oProperty["cuisine"],
+                    "Dietvegan": oProperty["diet:vegan"],
+                    "Dietvegetarian": oProperty["diet:vegetarian"],
+                    "Organic": oProperty["organic"],
+                    "Wheelchair":oProperty["wheelchair"] } });
+                    this.getView().getModel("eventLocation").submitChanges({
+                        success: function() {
+                            console.log("Speichern erfolgreich");
+                        },
+                        error: function() {
+                            console.log("Fehler beim Speichern");
+                        }
+                    });
+                    
+
                 }
 
             });

@@ -25,6 +25,13 @@
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "eventLocationService": {
+        "uri": "/sap/opu/odata/SAP/Z_GR1_MAP_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
       }
     }
   },
@@ -74,6 +81,11 @@
       },
       "": {
         "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "eventLocation": {
+        "dataSource": "eventLocationService",
         "preload": true,
         "settings": {}
       }
